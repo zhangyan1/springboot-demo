@@ -3,7 +3,7 @@
 #set( $symbol_escape = '\' )
 package ${package}.web.controller;
 
-
+import ${package}.client.common.list.ListWrapper;
 import ${package}.client.common.result.Result;
 import ${package}.core.user.service.UserInfoService;
 import lombok.extern.slf4j.Slf4j;
@@ -27,5 +27,16 @@ public class UserInfoController {
     @Resource
     private UserInfoService userInfoService;
 
-   
+    @RequestMapping(value = "/findUserNameByDesc", method = RequestMethod.GET)
+    public Result<ListWrapper<String>> findUserNameByDesc(
+            @RequestParam(value = "pageSize", required = false) Integer pageSize,
+            @RequestParam(value = "currentPage", required = false) Integer currentPage
+    ) {
+        return userInfoService.findUserNameByDesc(pageSize, currentPage);
+    }
+
+    @RequestMapping(value = "/server/time", method = RequestMethod.GET)
+    public Date serverTime() {
+        return new Date();
+    }
 }
