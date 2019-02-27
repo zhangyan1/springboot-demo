@@ -1,0 +1,187 @@
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="false">
+
+    <appender name="ERROR_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/${rootArtifactId}.error.log</file>
+        <encoding>UTF-8</encoding>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.home}/${rootArtifactId}.error.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <maxHistory>8</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>error</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="INFO_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/${rootArtifactId}.info.log</file>
+        <encoding>UTF-8</encoding>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.home}/${rootArtifactId}.info.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <maxHistory>8</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>info</level>
+            <onMatch>ACCEPT</onMatch>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="PROJECT" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/${rootArtifactId}.log</file>
+        <encoding>UTF-8</encoding>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.home}/${rootArtifactId}.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <maxHistory>3</maxHistory>
+        </rollingPolicy>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>${loglevel}</level>
+        </filter>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="ACCESS_LOG" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/access.log</file>
+        <encoding>UTF-8</encoding>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.home}/access.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <maxHistory>10</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="SQL" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/sql.log</file>
+        <encoding>UTF-8</encoding>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.home}/sql.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="MQ" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/mq.log</file>
+        <encoding>UTF-8</encoding>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.home}/mq.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="AACE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${log.home}/aace.log</file>
+        <encoding>UTF-8</encoding>
+        <append>true</append>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <FileNamePattern>${log.home}/aace.log.%d{yyyy-MM-dd}
+            </FileNamePattern>
+            <maxHistory>7</maxHistory>
+        </rollingPolicy>
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+        </layout>
+    </appender>
+
+    <appender name="PrintParamResult" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.home}/facade-param.log</file>
+		<encoding>UTF-8</encoding>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.home}/facade-param.log.%d{yyyy-MM-dd}
+			</FileNamePattern>
+			<maxHistory>4</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<appender name="Performance" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${log.home}/performance-time.log</file>
+		<encoding>UTF-8</encoding>
+		<append>true</append>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${log.home}/performance-time.log.%d{yyyy-MM-dd}
+			</FileNamePattern>
+			<maxHistory>7</maxHistory>
+		</rollingPolicy>
+		<layout class="ch.qos.logback.classic.PatternLayout">
+			<pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} - [%thread] %-5level - %logger{35} - %msg%n</pattern>
+		</layout>
+	</appender>
+
+	<logger name="com.shinemo.buycenter.core.mq">
+        <level value="${loglevel}"/>
+        <appender-ref ref="MQ"/>
+  	</logger>
+
+  	<logger name="mapper">
+  	   	<level value="${loglevel}"/>
+        <appender-ref ref="SQL"/>
+    </logger>
+
+		<logger name="com.shinemo.Aace.Logger" additivity="false">
+		<level value="${loglevel}"/>
+		<appender-ref ref="AACE"/>
+	</logger>
+
+	<logger name="com.shinemo.client.aop.log.PrintParamResult" additivity="false">
+		<level value="${loglevel}"/>
+		<appender-ref ref="PrintParamResult"/>
+	</logger>
+
+	<logger name="com.shinemo.client.aop.performance.PerformanceInner" additivity="false">
+		<level value="${loglevel}"/>
+		<appender-ref ref="Performance"/>
+	</logger>
+
+	<logger name="com.shinemo.client.aop.performance.PerformanceOuter" additivity="false">
+		<level value="${loglevel}"/>
+		<appender-ref ref="Performance"/>
+	</logger>
+
+	<logger name="access" additivity="false">
+		<level value="info"/>
+		<appender-ref ref="ACCESS_LOG"/>
+	</logger>
+
+	<root>
+		<level value="${loglevel}" />
+		<appender-ref ref="PROJECT" />
+		<appender-ref ref="ERROR_LOG" />
+		<appender-ref ref="INFO_LOG" />
+	</root>
+</configuration>

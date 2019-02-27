@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+	   http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       "
+	default-autowire="byName">
+
+	<import resource="classpath:jdpurchase-web.xml" />
+
+	<context:component-scan base-package="${package}.web" />
+	<context:annotation-config />
+
+	<mvc:annotation-driven conversion-service="conversionService" >
+		<mvc:message-converters register-defaults="false">
+			<ref bean="stringHttpMessageConverter"/>
+			<ref bean="jsonHttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"/>
+			<bean class="org.springframework.http.converter.support.AllEncompassingFormHttpMessageConverter"/>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean id="conversionService"
+      class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.shinemo.client.spring.StringToEnumConverterFactory"/>
+                <bean class="com.shinemo.jd.web.common.StringToDateConverterFactory"/>
+            </set>
+        </property>
+    </bean>
+
+	<bean id="genericConversionService" class="org.springframework.core.convert.support.GenericConversionService"/>
+
+	<!-- responseBody使用 -->
+	<bean id="stringHttpMessageConverter"
+		class="org.springframework.http.converter.StringHttpMessageConverter" />
+	<bean id="jsonHttpMessageConverter"
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" >
+        <property name="objectMapper" ref="objectMapper"/>
+	</bean>
+
+	<bean id="objectMapper" class="com.shinemo.jd.web.util.ObjectMapper" />
+
+	<bean id="exceptionHandler" class="com.shinemo.jd.web.common.ExceptionHandler" />
+
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:config.properties</value>
+			</list>
+		</property>
+	</bean>
+	<context:property-placeholder/>
+</beans>

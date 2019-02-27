@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+       "
+       default-autowire="byName">
+
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+	<context:component-scan base-package="${package}.core.aop"/>
+
+	<bean id="performanceInner" class="com.shinemo.client.common.aop.performance.PerformanceInner"/>
+
+	<bean id="performanceOuter" class="com.shinemo.client.common.aop.performance.PerformanceOuter">
+		<property name="threshold" value="${threshold}"/>
+	</bean>
+
+	<bean id="printFacadeParamResult" class="com.shinemo.client.common.aop.log.PrintParamResult"/>
+
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="printFacadeParamResultPointcut"
+					  expression="execution(* (${package}.client..facade.*FacadeService+).*(..))" />
+		<aop:aspect id="printFacadeParamResultAspect" ref="printFacadeParamResult">
+			<aop:around method="around"  pointcut-ref="printFacadeParamResultPointcut" />
+		</aop:aspect>
+	</aop:config>
+
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="performanceInnerPointcut"
+					  expression="execution(* ${package}.core..*.*(..))" />
+		<aop:advisor advice-ref="performanceInner" pointcut-ref="performanceInnerPointcut" />
+	</aop:config>
+ 
+	<aop:config proxy-target-class="true">
+		<aop:pointcut id="performanceOuterPointcut"
+					  expression="execution(* (${package}.client..facade.*FacadeService+).*(..))" />
+		<aop:advisor advice-ref="performanceOuter" pointcut-ref="performanceOuterPointcut" />
+	</aop:config>
+
+</beans>
