@@ -54,7 +54,7 @@
     </dependencies>
 
     <build>
-        <finalName>mq-server</finalName>
+        <finalName>${rootArtifactId}</finalName>
 
         <resources>
             <resource>
