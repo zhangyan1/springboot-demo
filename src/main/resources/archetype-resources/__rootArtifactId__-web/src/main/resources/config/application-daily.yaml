@@ -3,7 +3,7 @@
 application.env: 1
 # *** log自定义配置 ***
 log:
-  home: "/data/logs/mq-server"
+  home: "/data/logs/${parentArtifactId}"
   level: "debug"
 # *** logback自定义配置 ***
 spring.logback:
@@ -24,7 +24,7 @@ spring:
     username: "root"
     password: "shinemo123"
   redis:
-    config: "10.0.10.53:6379:shinemo123:6"
+    #config: "10.0.10.53:6379:shinemo123:6"
 # 日志格式中 clr 占位符生效配置
   output.ansi.enabled: "NEVER"
   jmx:
@@ -52,17 +52,3 @@ spring:
 #        - "org.springframework.boot.autoconfigure.cache.RedisCacheConfiguration"
 #        - "org.springframework.boot.autoconfigure.cache.NoOpCacheConfiguration"
 #        - "org.springframework.boot.autoconfigure.cache.GenericCacheConfiguration"
-
-
-
-shinemo:
-  application:
-    domain: "http://app.e.uban360.net"
-  jce:
-    site-domain:
-      yue-card: "http://10.0.14.11:60009"
-    center-host: "10.0.10.62:16999"
-    trace: true
-    sample: 100
-  mq:
-    address: "10.0.10.86:9876"

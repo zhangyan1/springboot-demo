@@ -55,8 +55,8 @@ spring:
 # *** web配置 ***
 server:
   port: 7019
-  context-path: "/mq-server"
-  display-name: "mq-server"
+  context-path: "/${parentArtifactId}"
+  display-name: "${parentArtifactId}"
 # *** mybatis配置 ***
 mybatis:
   mapper-locations: "classpath*:mapper/*.xml"
@@ -66,10 +66,3 @@ log4jdbc:
   dump.sql.addsemicolon: true
   sqltiming.error.threshold: 1000
   sqltiming.warn.threshold: 500
-shinemo:
-  jce:
-    provider-port: 13019
-    provider-proxy: "mq-server"
-  application:
-    site-id:
-      yue-card: 3
