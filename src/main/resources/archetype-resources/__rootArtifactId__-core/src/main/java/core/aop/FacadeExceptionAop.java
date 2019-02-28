@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 
-package ${package}.client.common.aop;
+package ${package}.core.aop;
 import ${package}.client.common.util;
 import ${package}.client.common.error;
 import lombok.Setter;

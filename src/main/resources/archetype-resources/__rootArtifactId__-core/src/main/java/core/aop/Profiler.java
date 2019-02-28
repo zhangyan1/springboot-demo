@@ -2,7 +2,7 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 
-package ${package}.client.common.aop;
+package ${package}.core.aop;
 
 import org.apache.commons.lang.StringUtils;
 import java.text.MessageFormat;
@@ -444,11 +444,11 @@ public class Profiler {
                 }
 
                 if (percent > 0) {
-                    pattern.append(", {4,number,##%}");
+                    pattern.append(", {4,number,${symbol_pound}${symbol_pound}%}");
                 }
 
                 if (percentOfAll > 0) {
-                    pattern.append(", {5,number,##%}");
+                    pattern.append(", {5,number,${symbol_pound}%}");
                 }
 
                 pattern.append("]");
