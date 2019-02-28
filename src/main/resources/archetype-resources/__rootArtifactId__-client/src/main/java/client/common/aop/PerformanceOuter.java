@@ -1,10 +1,8 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
+#set($symbol_pound='#')
+#set($symbol_dollar='$')
+#set($symbol_escape='\' )
 
 package ${package}.client.common.aop;
-
-
 import ${package}.client.common.aop.Profiler.Entry;
 import lombok.Getter;
 import lombok.Setter;

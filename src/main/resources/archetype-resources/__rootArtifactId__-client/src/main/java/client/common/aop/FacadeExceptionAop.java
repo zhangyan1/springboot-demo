@@ -3,9 +3,8 @@
 #set( $symbol_escape = '\' )
 
 package ${package}.client.common.aop;
-
 import ${package}.client.common.util;
-import ${package}.client.common.error
+import ${package}.client.common.error;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;

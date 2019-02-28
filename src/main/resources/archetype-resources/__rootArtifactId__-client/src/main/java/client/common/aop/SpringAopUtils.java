@@ -1,4 +1,7 @@
-package com.shinemo.client.aop.util;
+#set( $symbol_pound = '#' )
+#set( $symbol_dollar = '$' )
+#set( $symbol_escape = '\' )
+package ${package}.client.common.aop;
 
 import org.springframework.aop.aspectj.*;
 import org.springframework.aop.config.MethodLocatingFactoryBean;
@@ -16,10 +19,7 @@ import org.springframework.beans.factory.support.RootBeanDefinition;
 import java.util.Map;
 
 /**
- * Spring AOP 工具类
- *
- * @author Harold Luo
- * @date 2018-08-16
+ * Created by ${userName} on ${today}.
  */
 public class SpringAopUtils {
 

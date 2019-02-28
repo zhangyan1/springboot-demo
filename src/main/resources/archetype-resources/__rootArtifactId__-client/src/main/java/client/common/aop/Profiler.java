@@ -1,4 +1,3 @@
-
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
@@ -6,7 +5,6 @@
 package ${package}.client.common.aop;
 
 import org.apache.commons.lang.StringUtils;
-
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Collections;
