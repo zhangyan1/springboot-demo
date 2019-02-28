@@ -7,7 +7,7 @@ springboot 自定义骨架创建应用
 
 
 
-mvn archetype:generate -DarchetypeCatalog=local -DgroupId=com.sun.try -DartifactId=try -Dtoday=06/02/2018 -DuserName=zhangyan
+mvn archetype:generate -DarchetypeCatalog=local -DgroupId=com.sodanights.circle -DartifactId=circle -Dtoday=06/02/2018 -DuserName=zhangyan
 
 
 
