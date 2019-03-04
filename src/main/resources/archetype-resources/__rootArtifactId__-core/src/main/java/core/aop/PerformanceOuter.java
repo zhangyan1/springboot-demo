@@ -3,7 +3,6 @@
 #set($symbol_escape='\' )
 
 package ${package}.core.aop;
-import ${package}.client.common.aop.Profiler.Entry;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
@@ -20,7 +19,7 @@ public class PerformanceOuter extends PerformanceInner {
 
     @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
-        Entry start = Profiler.getEntry();
+        Profiler.Entry start = Profiler.getEntry();
         boolean outer = start == null;
         if (!outer) {
             return super.invoke(invocation);

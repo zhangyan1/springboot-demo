@@ -2,9 +2,9 @@
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 
-package ${package}.core.configuration;
-
-
+package ${package}.core.config;
+import ${package}.client.common.error.Errors;
+import ${package}.core.aop.*;
 
 import org.springframework.aop.Advisor;
 import org.springframework.aop.Pointcut;
@@ -65,8 +65,8 @@ public class AopConfiguration implements BeanDefinitionRegistryPostProcessor {
     @Bean
     public FacadeExceptionAop facadeExceptionAop() {
         FacadeExceptionAop facadeExceptionAop = new FacadeExceptionAop();
-        facadeExceptionAop.setError(OrderCenterErrors.SERVICE_ERROR);
-        facadeExceptionAop.setParamError(OrderCenterErrors.PARAM_ERROR);
+        facadeExceptionAop.setError(Errors.SERVICE_ERROR);
+        facadeExceptionAop.setParamError(Errors.PARAMS_ERROR);
         return facadeExceptionAop;
     }
 

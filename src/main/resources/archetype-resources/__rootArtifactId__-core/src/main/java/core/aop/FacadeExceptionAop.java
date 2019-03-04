@@ -3,8 +3,12 @@
 #set( $symbol_escape = '\' )
 
 package ${package}.core.aop;
-import ${package}.client.common.util;
-import ${package}.client.common.error;
+import ${package}.client.common.error.ErrorInfo;
+import ${package}.client.common.error.Errors;
+import ${package}.client.common.exception.BaseException;
+import ${package}.client.common.result.Result;
+import ${package}.client.common.util.EnvUtil;
+import ${package}.client.common.util.VerifyUtils;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -53,11 +57,11 @@ public class FacadeExceptionAop {
                 return Result.error(new ErrorInfo(getParamError().getCode(), e.getMessage(), e.getMessage()), getThrowable(e));
             }
             throw e;
-        } catch (BizException e) {
+        } catch (BaseException e) {
             log.error(String.format("message=[%s],BizException is ", e.getMessage()), e);
             Class<?> resultType = getResultType(joinPoint);
             if (resultType != null && Result.class.isAssignableFrom(resultType)) {
-                return Result.error(e.getError(), getThrowable(e));
+                return Result.error(e.getErrorInfo, getThrowable(e));
             }
             throw e;
         } catch (Throwable e) {
