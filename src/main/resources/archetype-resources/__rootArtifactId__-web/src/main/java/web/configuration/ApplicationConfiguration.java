@@ -20,8 +20,6 @@ import javax.servlet.Filter;
  * Created by ${userName} on ${today}.
  */
 @Configuration
-@MapperScan(basePackages = {"${package}.dal.user.mapper"})
-@ImportResource(locations = {"classpath*:${parentArtifactId}-core.xml"})
 public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
 
     /**
@@ -54,6 +52,16 @@ public class ApplicationConfiguration extends WebMvcConfigurerAdapter {
         registration.setName("demoFilter");
         return registration;
     }
+
+    @Bean
+    public FilterRegistrationBean registerAccessLogFilter(ConfigurableEnvironment environment) {
+        FilterRegistrationBean registration = new FilterRegistrationBean(new LoggerFilter());
+        registration.addUrlPatterns("*");
+        registration.addInitParameter("applicationName","${parentArtifactId}");
+        registration.setName("loggerFilter");
+        return registration;
+    }
+
 
     public Filter demoFilter() {
         return new DemoFilter();
