@@ -20,7 +20,8 @@ spring.logback:
 # ************************* 第三方配置 *************************
 spring:
   profiles:
-    active: "${spring.profiles.active}"
+    #active: "${spring.profiles.active}"
+    active: "daily"
   application:
     name: "mq-server"
 # *** http配置 ***
