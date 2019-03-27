@@ -152,6 +152,7 @@
         <root>
             <appender-ref ref="APPLICATION" level="${log.level}"/>
             <appender-ref ref="ERROR" level="ERROR"/>
+            <appender-ref ref="CONSOLE" level="${log.level}"/>
         </root>
     </springProfile>
 
