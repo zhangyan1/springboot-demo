@@ -5,6 +5,7 @@ package ${package}.web.configuration;
 
 import ${package}.web.interceptor.DemoInterceptor;
 import ${package}.web.filter.DemoFilter;
+import ${package}.web.filter.LoggerFilter;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
