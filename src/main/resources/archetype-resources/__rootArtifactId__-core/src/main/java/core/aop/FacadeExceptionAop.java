@@ -61,7 +61,7 @@ public class FacadeExceptionAop {
             log.error(String.format("message=[%s],BizException is ", e.getMessage()), e);
             Class<?> resultType = getResultType(joinPoint);
             if (resultType != null && Result.class.isAssignableFrom(resultType)) {
-                return Result.error(e.getErrorInfo, getThrowable(e));
+                return Result.error(e.getErrorInfo(), getThrowable(e));
             }
             throw e;
         } catch (Throwable e) {
