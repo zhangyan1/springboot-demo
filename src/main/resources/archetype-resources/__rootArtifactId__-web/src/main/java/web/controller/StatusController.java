@@ -12,9 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import ${package}.client.util.EnvUtil;
-import com.shinemo.power.client.anno.IgnoreLogin;
+import ${package}.client.common.util.EnvUtil;
 
 
 @Controller
@@ -24,14 +22,12 @@ public class StatusController {
 
     @RequestMapping(value="/checkstatus",method=RequestMethod.GET)
     @ResponseBody
-    @IgnoreLogin
     public String check(HttpServletResponse response) {
         return "success";
     }
 
     @RequestMapping(value="/env",method=RequestMethod.GET)
     @ResponseBody
-    @IgnoreLogin
     public String env(HttpServletResponse response) {
         return EnvUtil.getCurrentEnv()+"";
     }

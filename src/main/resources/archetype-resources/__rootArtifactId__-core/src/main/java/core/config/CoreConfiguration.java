@@ -1,4 +1,4 @@
-import javax.annotation.Resource;#set( $symbol_pound = '#' )
+#set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
 
@@ -6,7 +6,7 @@ import javax.annotation.Resource;#set( $symbol_pound = '#' )
 package ${package}.core.config;
 
 import ${package}.core.common.InternalEventBus;
-
+import javax.annotation.Resource;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.DependsOn;

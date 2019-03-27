@@ -13,6 +13,7 @@ import org.springframework.context.annotation.ImportResource;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.core.env.ConfigurableEnvironment;
 
 import javax.servlet.Filter;
 
